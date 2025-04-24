@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookStore - Your Online Book Shop</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">BookStore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#newArrivals">New Arrivals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#featuredBooks">Bestsellers</a>
+                    </li>
+                </ul>
+                <form class="d-flex me-3" id="searchForm">
+                    <input class="form-control me-2" type="search" placeholder="Search books..." id="searchInput">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+                <div class="d-flex align-items-center">
+                    <button id="wishlistBtn" class="btn btn-outline-light me-2" style="display: none;">
+                        <i class="fas fa-heart"></i> Wishlist
+                        <span class="badge bg-danger wishlist-count">0</span>
+                    </button>
+                    <a href="cart.html" id="cartBtn" class="btn btn-outline-light me-2">
+                        <i class="fas fa-shopping-cart"></i> Cart
+                        <span class="badge bg-danger cart-badge">0</span>
+                    </a>
+                    <div id="userMenu" class="dropdown" style="display: none;">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                            <i class="fas fa-user"></i> <span id="userName"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><button id="logoutBtn" class="dropdown-item" onclick="handleLogout()">Logout</button></li>
+                        </ul>
+                    </div>
+                    <a href="login.html" id="loginBtn" class="btn btn-outline-light">
+                        Login
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Welcome to BookStore</h1>
+                    <p class="lead">Discover millions of books at your fingertips</p>
+                    <a href="#featuredBooks" class="btn btn-primary btn-lg">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Books Section -->
+    <section class="featured-books py-5" id="featuredBooks">
+        <div class="container">
+            <h2 class="text-center mb-4">Featured Books</h2>
+            <div class="row" id="featuredBooksContainer">
+                <!-- Books will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals Section -->
+    <section class="new-arrivals py-5 bg-light" id="newArrivals">
+        <div class="container">
+            <h2 class="text-center mb-4">New Arrivals</h2>
+            <div class="row" id="newArrivalsContainer">
+                <!-- Books will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="loginEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>Your trusted online bookstore for all your reading needs.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">About Us</a></li>
+                        <li><a href="#" class="text-light">Contact</a></li>
+                        <li><a href="#" class="text-light">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-light">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: info@bookstore.com<br>
+                    Phone: +1 234 567 890</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/wishlist.js"></script>
+</body>
+</html>
